@@ -30,29 +30,28 @@
 
 ### Task 1.3: shadcn/ui 초기화 (20분)
 
-- [ ] shadcn/ui CLI 초기화 (`npx shadcn-ui@latest init`)
-- [ ] `src/lib/utils.ts` 생성 (`cn` 함수)
-- [ ] `src/components/ui/` 폴더 생성
-- [ ] 필수 의존성 설치 (`clsx`, `tailwind-merge`, `lucide-react`)
+- [x] `src/lib/utils.ts` 생성 (`cn` 함수)
+- [x] `src/components/ui/` 폴더 생성
+- [x] `src/hooks/`, `src/types/` 폴더 생성
+- [x] 필수 의존성 설치 (`clsx`, `tailwind-merge`, `lucide-react`)
 
 ### Task 1.4: CVA 설치 (15분)
 
-- [ ] `class-variance-authority` 설치
-- [ ] 기본 variant 패턴 이해 및 테스트
+- [x] `class-variance-authority` 설치
 
 ### Task 1.5: Storybook 설치 및 설정 (30분)
 
-- [ ] Storybook 초기화 (`npx storybook@latest init`)
-- [ ] `.storybook/main.ts` 설정
-- [ ] `.storybook/preview.ts` 설정 (TailwindCSS 스타일 적용)
-- [ ] 접근성 애드온 설치 (`@storybook/addon-a11y`)
-- [ ] `npm run storybook` 정상 실행 확인
+- [x] Storybook v10 초기화 (`pnpm dlx storybook@latest init`)
+- [x] `.storybook/main.ts` 설정
+- [x] `.storybook/preview.ts` 설정 (TailwindCSS 스타일 import)
+- [x] 접근성 애드온 설치 (`@storybook/addon-a11y`)
+- [x] `pnpm run storybook` 정상 실행 확인
 
 ### 최종 검증
 
-- [ ] 모든 스크립트 정상 동작 확인 (`dev`, `build`, `storybook`)
-- [ ] TypeScript 에러 없음 확인
-- [ ] 폴더 구조 검증
+- [x] `pnpm run dev` 정상 동작 확인
+- [x] `pnpm run storybook` 정상 동작 확인
+- [x] 폴더 구조 검증
 
 ## ETC
 
