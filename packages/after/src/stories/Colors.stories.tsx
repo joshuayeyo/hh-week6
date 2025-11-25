@@ -152,6 +152,7 @@ const ColorPalette = () => (
         { name: 'Input', cssVar: '--input' },
         { name: 'Input Focus', cssVar: '--input-focus' },
         { name: 'Input Error', cssVar: '--input-error' },
+        { name: 'Input Disabled', cssVar: '--input-disabled' },
       ]}
     />
   </div>
