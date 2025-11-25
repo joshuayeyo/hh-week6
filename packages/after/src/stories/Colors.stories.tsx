@@ -97,6 +97,7 @@ const ColorPalette = () => (
         { name: 'Warning Hover', cssVar: '--warning-hover' },
         { name: 'Warning Foreground', cssVar: '--warning-foreground' },
         { name: 'Warning Light', cssVar: '--warning-light' },
+        { name: 'Warning Light Border', cssVar: '--warning-light-border' },
         { name: 'Warning Text', cssVar: '--warning-text' },
       ]}
     />
