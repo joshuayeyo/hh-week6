@@ -107,6 +107,7 @@ const ColorPalette = () => (
         { name: 'Info Hover', cssVar: '--info-hover' },
         { name: 'Info Foreground', cssVar: '--info-foreground' },
         { name: 'Info Light', cssVar: '--info-light' },
+        { name: 'Info Light Border', cssVar: '--info-light-border' },
         { name: 'Info Text', cssVar: '--info-text' },
       ]}
     />
