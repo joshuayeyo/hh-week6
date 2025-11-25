@@ -1,82 +1,119 @@
 @import "tailwindcss";
+@import "./primitives.css";
+@import "./semantics.css";
 
 /*
  * Design System CSS Variables
- * shadcn/ui 호환 CSS 변수 기반 테마 시스템
+ * Material Design 기준 컬러 시스템
+ *
+ * 구조:
+ * - primitives.css: 원시 컬러 팔레트 (HEX, Material Design)
+ * - semantics.css: 의미 기반 토큰 (Primitives 참조)
+ * - index.css: TailwindCSS @theme 확장 및 기본 스타일
  */
 
+/* ========================================
+ * TailwindCSS Theme Extension
+ * Semantic 토큰을 Tailwind 클래스로 연결
+ * ======================================== */
 @theme {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
+  /* 기본 컬러 */
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-tertiary: var(--foreground-tertiary);
+  --color-foreground-muted: var(--foreground-muted);
+
+  /* 카드/팝오버 */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Primary (Blue) */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-primary-light-border: var(--primary-light-border);
+
+  /* Secondary (Gray) */
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Muted */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Destructive/Error (Red) */
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-light: var(--destructive-light);
+  --color-destructive-light-border: var(--destructive-light-border);
+  --color-destructive-text: var(--destructive-text);
+
+  /* Success (Green) */
+  --color-success: var(--success);
+  --color-success-hover: var(--success-hover);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-light: var(--success-light);
+  --color-success-light-border: var(--success-light-border);
+  --color-success-text: var(--success-text);
+
+  /* Warning (Orange) */
+  --color-warning: var(--warning);
+  --color-warning-hover: var(--warning-hover);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-light: var(--warning-light);
+  --color-warning-light-border: var(--warning-light-border);
+  --color-warning-text: var(--warning-text);
+
+  /* Info (Cyan) */
+  --color-info: var(--info);
+  --color-info-hover: var(--info-hover);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-light: var(--info-light);
+  --color-info-light-border: var(--info-light-border);
+  --color-info-text: var(--info-text);
+
+  /* Neutral (Gray - 통계/기본 상태) */
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+  --color-neutral-light: var(--neutral-light);
+  --color-neutral-light-border: var(--neutral-light-border);
+  --color-neutral-text: var(--neutral-text);
+
+  /* Border */
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-border-dark: var(--border-dark);
+
+  /* Input */
+  --color-input: var(--input);
+  --color-input-focus: var(--input-focus);
+  --color-input-error: var(--input-error);
+  --color-input-disabled: var(--input-disabled);
+
+  /* Ring */
+  --color-ring: var(--ring);
+
+  /* Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-  }
-}
-
+/* ========================================
+ * Base Styles
+ * ======================================== */
 @layer base {
   * {
     @apply border-border;
