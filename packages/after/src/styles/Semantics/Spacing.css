@@ -1,0 +1,65 @@
+/*
+ * Semantic Spacing Tokens (의미 기반 간격 토큰)
+ * Primitives를 참조하여 컴포넌트별 의미 부여
+ */
+
+:root {
+  /* ========================================
+   * Button Spacing
+   * ======================================== */
+  --btn-padding-sm: var(--spacing-1-5) var(--spacing-3);  /* 6px 12px */
+  --btn-padding-md: var(--spacing-2-5) var(--spacing-5);  /* 10px 20px */
+  --btn-padding-lg: var(--spacing-3) var(--spacing-6);    /* 12px 24px */
+
+  /* ========================================
+   * Input Spacing
+   * ======================================== */
+  --input-padding: var(--spacing-2) var(--spacing-2-5);   /* 8px 10px */
+  --input-padding-lg: var(--spacing-4) var(--spacing-3-5); /* 16.5px 14px - textarea */
+
+  /* ========================================
+   * Card Spacing
+   * ======================================== */
+  --card-padding: var(--spacing-5);         /* 20px */
+  --card-header-padding: var(--spacing-5);  /* 20px */
+  --card-body-padding: var(--spacing-5);    /* 20px */
+
+  /* ========================================
+   * Modal Spacing
+   * ======================================== */
+  --modal-header-padding: var(--spacing-4) var(--spacing-6); /* 16px 24px */
+  --modal-body-padding: var(--spacing-6);                     /* 24px */
+  --modal-footer-padding: var(--spacing-4) var(--spacing-6); /* 16px 24px */
+
+  /* ========================================
+   * Alert Spacing
+   * ======================================== */
+  --alert-padding: var(--spacing-2-5) var(--spacing-3); /* 10px 12px */
+  --alert-gap: var(--spacing-2);                         /* 8px */
+
+  /* ========================================
+   * Badge Spacing
+   * ======================================== */
+  --badge-padding-sm: var(--spacing-0) var(--spacing-1);   /* 0 4px */
+  --badge-padding-md: var(--spacing-0) var(--spacing-2);   /* 0 8px */
+  --badge-padding-lg: var(--spacing-0) var(--spacing-2-5); /* 0 10px */
+
+  /* ========================================
+   * Table Spacing
+   * ======================================== */
+  --table-cell-padding: var(--spacing-4); /* 16px */
+
+  /* ========================================
+   * Form Spacing
+   * ======================================== */
+  --form-group-margin: var(--spacing-4);  /* 16px */
+  --form-label-margin: var(--spacing-1-5); /* 6px */
+  --form-helper-margin: var(--spacing-1); /* 4px */
+
+  /* ========================================
+   * Layout Spacing
+   * ======================================== */
+  --layout-gap-sm: var(--spacing-2);  /* 8px */
+  --layout-gap-md: var(--spacing-3);  /* 12px */
+  --layout-gap-lg: var(--spacing-4);  /* 16px */
+}

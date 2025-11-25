@@ -15,26 +15,26 @@
 
 ### Task 4.1: 토큰 파일 구조 개선
 
-- [ ] `Primitives/` 폴더 생성 및 `Colors.css` 분리
-- [ ] `Semantics/` 폴더 생성 및 `Colors.css` 분리
-- [ ] 기존 `primitives.css`, `semantics.css` 삭제
-- [ ] `index.css` import 경로 수정
-- [ ] 각 폴더에 `index.css` 생성 (named-export 방식)
+- [x] `Primitives/` 폴더 생성 및 `Colors.css` 분리
+- [x] `Semantics/` 폴더 생성 및 `Colors.css` 분리
+- [x] 기존 `primitives.css`, `semantics.css` 삭제
+- [x] `index.css` import 경로 수정
+- [x] 각 폴더에 `index.css` 생성 (named-export 방식)
 
 ### Task 4.2: Before 패키지 값 분석
 
-- [ ] Typography 값 추출 (10px, 12px, 14px, 16px, 18px, 20px, 24px, 28px)
-- [ ] Spacing 값 추출 (4px, 8px, 12px, 16px, 20px, 24px)
-- [ ] Shadow 값 추출 (card, modal 등)
+- [x] Typography 값 추출 (10px, 12px, 14px, 16px, 18px, 20px, 24px, 28px)
+- [x] Spacing 값 추출 (4px, 8px, 12px, 16px, 20px, 24px)
+- [x] Shadow 값 추출 (card, modal 등)
 
 ### Task 4.3: 토큰 정의
 
-- [ ] `Primitives/Typography.css` 생성
-- [ ] `Primitives/Spacing.css` 생성
-- [ ] `Primitives/Shadow.css` 생성
-- [ ] `Semantics/Typography.css` 생성
-- [ ] `Semantics/Spacing.css` 생성
-- [ ] `Semantics/Shadow.css` 생성
+- [x] `Primitives/Typography.css` 생성
+- [x] `Primitives/Spacing.css` 생성
+- [x] `Primitives/Shadow.css` 생성
+- [x] `Semantics/Typography.css` 생성
+- [x] `Semantics/Spacing.css` 생성
+- [x] `Semantics/Shadow.css` 생성
 
 ### Task 4.4: index.css @theme 블록 업데이트
 

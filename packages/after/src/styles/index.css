@@ -1,14 +1,14 @@
 @import "tailwindcss";
-@import "./primitives.css";
-@import "./semantics.css";
+@import "./Primitives";
+@import "./Semantics";
 
 /*
  * Design System CSS Variables
  * Material Design 기준 컬러 시스템
  *
  * 구조:
- * - primitives.css: 원시 컬러 팔레트 (HEX, Material Design)
- * - semantics.css: 의미 기반 토큰 (Primitives 참조)
+ * - Primitives/: 원시 토큰 (Colors, Typography, Spacing, Shadow)
+ * - Semantics/: 의미 기반 토큰 (Primitives 참조)
  * - index.css: TailwindCSS @theme 확장 및 기본 스타일
  */
 

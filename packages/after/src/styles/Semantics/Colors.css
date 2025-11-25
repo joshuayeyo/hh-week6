@@ -1,5 +1,5 @@
 /*
- * Semantic Tokens (의미 기반 토큰)
+ * Semantic Color Tokens (의미 기반 컬러 토큰)
  * Primitives를 참조하여 의미 기반 토큰 정의
  *
  * 구조: var(--primitive) 형식으로 참조
