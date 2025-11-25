@@ -38,19 +38,19 @@
 
 ### Task 4.4: index.css @theme 블록 업데이트
 
-- [ ] Typography 토큰 Tailwind 연결
-- [ ] Spacing 토큰 Tailwind 연결
-- [ ] Shadow 토큰 Tailwind 연결
-- [ ] 주석 업데이트
+- [x] Typography 토큰 Tailwind 연결
+- [x] Spacing 토큰 Tailwind 연결
+- [x] Shadow 토큰 Tailwind 연결
+- [x] 주석 업데이트
 
 ### Task 4.5: components.css 토큰 적용
 
-- [ ] 버튼 스타일에 토큰 적용
-- [ ] 폼 스타일에 토큰 적용
-- [ ] 카드 스타일에 토큰 적용
-- [ ] 뱃지 스타일에 토큰 적용
-- [ ] 알림 스타일에 토큰 적용
-- [ ] 기타 컴포넌트 스타일에 토큰 적용
+- [x] 버튼 스타일에 토큰 적용
+- [x] 폼 스타일에 토큰 적용
+- [x] 카드 스타일에 토큰 적용
+- [x] 뱃지 스타일에 토큰 적용
+- [x] 알림 스타일에 토큰 적용
+- [x] 기타 컴포넌트 스타일에 토큰 적용 (체크박스, 텍스트에어리어, 테이블, 모달)
 
 ### Task 4.6: 검증
 
