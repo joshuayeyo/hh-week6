@@ -84,6 +84,7 @@ const ColorPalette = () => (
         { name: 'Success Hover', cssVar: '--success-hover' },
         { name: 'Success Foreground', cssVar: '--success-foreground' },
         { name: 'Success Light', cssVar: '--success-light' },
+        { name: 'Success Light Border', cssVar: '--success-light-border' },
         { name: 'Success Text', cssVar: '--success-text' },
       ]}
     />
