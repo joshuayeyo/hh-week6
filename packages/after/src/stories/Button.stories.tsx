@@ -1,59 +1,87 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import '../styles/components.css'
+import { Button } from '@/components/ui/button'
 
 /**
  * Button 컴포넌트 스토리
- * 디자인 토큰 적용 검증용
+ * shadcn/ui + CVA 기반 순수 UI 컴포넌트
  */
 
-const meta: Meta = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
+  component: Button,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+    },
+    size: {
+      control: 'select',
+      options: ['default', 'sm', 'lg', 'icon'],
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    asChild: {
+      control: 'boolean',
+    },
   },
 }
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<typeof meta>
 
-// 버튼 Variants
+// 기본 버튼
+export const Default: Story = {
+  args: {
+    children: 'Button',
+    variant: 'default',
+  },
+}
+
+// Variants
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-      <button className="btn btn-primary btn-md">Primary</button>
-      <button className="btn btn-secondary btn-md">Secondary</button>
-      <button className="btn btn-danger btn-md">Danger</button>
-      <button className="btn btn-success btn-md">Success</button>
+    <div className="flex flex-wrap gap-3">
+      <Button variant="default">Default</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
     </div>
   ),
 }
 
-// 버튼 Sizes
+// Sizes
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <button className="btn btn-primary btn-sm">Small</button>
-      <button className="btn btn-primary btn-md">Medium</button>
-      <button className="btn btn-primary btn-lg">Large</button>
+    <div className="flex items-center gap-3">
+      <Button size="sm">Small</Button>
+      <Button size="default">Default</Button>
+      <Button size="lg">Large</Button>
     </div>
   ),
 }
 
-// 버튼 States
+// States
 export const States: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <button className="btn btn-primary btn-md">Normal</button>
-        <button className="btn btn-primary btn-md" disabled>Disabled</button>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-3">
+        <Button variant="default">Normal</Button>
+        <Button variant="default" disabled>Disabled</Button>
       </div>
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <button className="btn btn-secondary btn-md">Normal</button>
-        <button className="btn btn-secondary btn-md" disabled>Disabled</button>
+      <div className="flex gap-3">
+        <Button variant="secondary">Normal</Button>
+        <Button variant="secondary" disabled>Disabled</Button>
       </div>
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <button className="btn btn-danger btn-md">Normal</button>
-        <button className="btn btn-danger btn-md" disabled>Disabled</button>
+      <div className="flex gap-3">
+        <Button variant="destructive">Normal</Button>
+        <Button variant="destructive" disabled>Disabled</Button>
       </div>
     </div>
   ),
@@ -62,8 +90,43 @@ export const States: Story = {
 // Full Width
 export const FullWidth: Story = {
   render: () => (
-    <div style={{ width: '300px' }}>
-      <button className="btn btn-primary btn-md btn-fullwidth">Full Width Button</button>
+    <div className="w-[300px]">
+      <Button className="w-full">Full Width Button</Button>
+    </div>
+  ),
+}
+
+// All Variants Overview
+export const AllVariants: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6">
+      <div>
+        <h3 className="text-sm font-medium mb-2 text-foreground-muted">Variants</h3>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="default">Default</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2 text-foreground-muted">Sizes</h3>
+        <div className="flex items-center gap-2">
+          <Button size="sm">Small</Button>
+          <Button size="default">Default</Button>
+          <Button size="lg">Large</Button>
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2 text-foreground-muted">Disabled</h3>
+        <div className="flex flex-wrap gap-2">
+          <Button disabled>Disabled</Button>
+          <Button variant="secondary" disabled>Disabled</Button>
+          <Button variant="destructive" disabled>Disabled</Button>
+        </div>
+      </div>
     </div>
   ),
 }
