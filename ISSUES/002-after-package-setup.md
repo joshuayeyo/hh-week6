@@ -1,7 +1,9 @@
 ## Description
+
 레거시 디자인 시스템(`packages/before/`)을 개선하기 위한 새로운 프로젝트 환경을 `packages/after/`에 구성합니다.
 
 **목표**: 모던 디자인 시스템 구축을 위한 기반 환경 설정
+
 - React 19 + TypeScript + Vite 프로젝트 생성
 - TailwindCSS v4 + CSS 변수 기반 테마 시스템
 - shadcn/ui 컴포넌트 라이브러리 초기화
@@ -13,28 +15,33 @@
 ## Todo
 
 ### Task 1.1: After 패키지 초기화 (15분)
-- [ ] Vite + React + TypeScript 프로젝트 생성
-- [ ] 기본 폴더 구조 생성 (`src/components/ui`, `src/lib`, `src/hooks`, `src/types`)
-- [ ] `npm run dev` 정상 실행 확인
+
+- [x] Vite + React + TypeScript 프로젝트 생성 (이미 존재)
+- [x] 기본 폴더 구조 존재 (`src/components`, `src/pages`, `src/services`)
+- [x] `pnpm run dev` 정상 실행 확인
 
 ### Task 1.2: TailwindCSS 설치 및 설정 (30분)
-- [ ] TailwindCSS, PostCSS, Autoprefixer 설치
-- [ ] `tailwind.config.js` 설정 (shadcn/ui 호환)
-- [ ] CSS 변수 기반 컬러 시스템 설정 (`src/index.css`)
-- [ ] 다크 모드 CSS 변수 준비
-- [ ] TailwindCSS 클래스 동작 확인
+
+- [x] TailwindCSS v4, PostCSS 설치
+- [x] `postcss.config.js` 설정 (tailwindcss 플러그인 추가)
+- [x] CSS 변수 기반 컬러 시스템 설정 (`src/styles/index.css`)
+- [x] 다크 모드 CSS 변수 준비
+- [x] TailwindCSS v4 `@theme` 블록으로 커스텀 컬러 등록
 
 ### Task 1.3: shadcn/ui 초기화 (20분)
+
 - [ ] shadcn/ui CLI 초기화 (`npx shadcn-ui@latest init`)
 - [ ] `src/lib/utils.ts` 생성 (`cn` 함수)
 - [ ] `src/components/ui/` 폴더 생성
 - [ ] 필수 의존성 설치 (`clsx`, `tailwind-merge`, `lucide-react`)
 
 ### Task 1.4: CVA 설치 (15분)
+
 - [ ] `class-variance-authority` 설치
 - [ ] 기본 variant 패턴 이해 및 테스트
 
 ### Task 1.5: Storybook 설치 및 설정 (30분)
+
 - [ ] Storybook 초기화 (`npx storybook@latest init`)
 - [ ] `.storybook/main.ts` 설정
 - [ ] `.storybook/preview.ts` 설정 (TailwindCSS 스타일 적용)
@@ -42,6 +49,7 @@
 - [ ] `npm run storybook` 정상 실행 확인
 
 ### 최종 검증
+
 - [ ] 모든 스크립트 정상 동작 확인 (`dev`, `build`, `storybook`)
 - [ ] TypeScript 에러 없음 확인
 - [ ] 폴더 구조 검증
@@ -49,9 +57,11 @@
 ## ETC
 
 ### 예상 소요 시간
+
 - **총 110분** (약 2시간)
 
 ### 생성될 폴더 구조
+
 ```
 packages/after/
 ├── .storybook/
@@ -75,6 +85,7 @@ packages/after/
 ```
 
 ### 설치될 패키지
+
 ```json
 {
   "dependencies": {
@@ -99,12 +110,30 @@ packages/after/
 ```
 
 ### 다음 단계
+
 이 이슈 완료 후 **Phase 2: 기본 UI 컴포넌트 마이그레이션**으로 진행:
-- Issue 003: Button 컴포넌트 구현
-- Issue 004: Badge 컴포넌트 구현
-- Issue 005: Alert 컴포넌트 구현
+
+- Issue 003: 디자인 토큰 정의 및 before 컬러 매핑
+- Issue 004: Button 컴포넌트 구현
+- Issue 005: Badge 컴포넌트 구현
+- Issue 006: Alert 컴포넌트 구현
+
+### 참고: 디자인 토큰 작업 (Issue 003 예정)
+
+현재 CSS 변수는 shadcn/ui 기본 테마로 설정됨. 추후 `before` 패키지 컬러를 기반으로 매핑 필요:
+
+| before 컬러   | HEX       | 매핑할 CSS 변수 |
+| ------------- | --------- | --------------- |
+| Primary       | `#1976d2` | `--primary`     |
+| Primary Hover | `#1565c0` | -               |
+| Danger/Error  | `#d32f2f` | `--destructive` |
+| Success       | `#388e3c` | (추가 필요)     |
+| Warning       | `#f57c00` | (추가 필요)     |
+| Info          | `#0288d1` | (추가 필요)     |
+| Secondary     | `#757575` | `--secondary`   |
 
 ### 참조 링크
+
 - [TailwindCSS 공식 문서](https://tailwindcss.com/docs)
 - [shadcn/ui 공식 문서](https://ui.shadcn.com/)
 - [CVA 공식 문서](https://cva.style/docs)
