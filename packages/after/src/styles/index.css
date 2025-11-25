@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "./Primitives";
 @import "./Semantics";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 /*
  * Design System CSS Variables
@@ -16,7 +19,15 @@
  * TailwindCSS Theme Extension
  * Semantic 토큰을 Tailwind 클래스로 연결
  * ======================================== */
-@theme {
+@theme inline {
+  /* ========================================
+   * Radius (shadcn/ui 호환)
+   * ======================================== */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
   /* ========================================
    * Colors
    * ======================================== */
@@ -167,13 +178,6 @@
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
-
-  /* ========================================
-   * Radius
-   * ======================================== */
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
 }
 
 /* ========================================
@@ -181,7 +185,7 @@
  * ======================================== */
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
 
   body {
