@@ -1,14 +1,14 @@
 @import "tailwindcss";
-@import "./primitives.css";
-@import "./semantics.css";
+@import "./Primitives";
+@import "./Semantics";
 
 /*
  * Design System CSS Variables
- * Material Design 기준 컬러 시스템
+ * Material Design 기준 디자인 토큰 시스템
  *
  * 구조:
- * - primitives.css: 원시 컬러 팔레트 (HEX, Material Design)
- * - semantics.css: 의미 기반 토큰 (Primitives 참조)
+ * - Primitives/: 원시 토큰 (Colors, Typography, Spacing, Shadow)
+ * - Semantics/: 의미 기반 토큰 (Primitives 참조)
  * - index.css: TailwindCSS @theme 확장 및 기본 스타일
  */
 
@@ -17,6 +17,9 @@
  * Semantic 토큰을 Tailwind 클래스로 연결
  * ======================================== */
 @theme {
+  /* ========================================
+   * Colors
+   * ======================================== */
   /* 기본 컬러 */
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
@@ -105,7 +108,69 @@
   /* Ring */
   --color-ring: var(--ring);
 
-  /* Radius */
+  /* ========================================
+   * Typography
+   * ======================================== */
+  /* Font Size */
+  --font-size-xs: var(--font-size-xs);
+  --font-size-sm: var(--font-size-sm);
+  --font-size-base: var(--font-size-base);
+  --font-size-md: var(--font-size-md);
+  --font-size-lg: var(--font-size-lg);
+  --font-size-xl: var(--font-size-xl);
+  --font-size-2xl: var(--font-size-2xl);
+  --font-size-3xl: var(--font-size-3xl);
+  --font-size-4xl: var(--font-size-4xl);
+
+  /* Font Weight */
+  --font-weight-normal: var(--font-weight-normal);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+
+  /* Line Height */
+  --line-height-none: var(--line-height-none);
+  --line-height-tight: var(--line-height-tight);
+  --line-height-snug: var(--line-height-snug);
+  --line-height-normal: var(--line-height-normal);
+  --line-height-relaxed: var(--line-height-relaxed);
+  --line-height-loose: var(--line-height-loose);
+
+  /* Font Family */
+  --font-family-sans: var(--font-family-sans);
+  --font-family-mono: var(--font-family-mono);
+
+  /* ========================================
+   * Spacing
+   * ======================================== */
+  --spacing-0: var(--spacing-0);
+  --spacing-px: var(--spacing-px);
+  --spacing-0-5: var(--spacing-0-5);
+  --spacing-1: var(--spacing-1);
+  --spacing-1-5: var(--spacing-1-5);
+  --spacing-2: var(--spacing-2);
+  --spacing-2-5: var(--spacing-2-5);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+
+  /* ========================================
+   * Shadow
+   * ======================================== */
+  --shadow-none: var(--shadow-none);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* ========================================
+   * Radius
+   * ======================================== */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);

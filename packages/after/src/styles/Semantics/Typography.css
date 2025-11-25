@@ -1,0 +1,111 @@
+/*
+ * Semantic Typography Tokens (의미 기반 타이포그래피 토큰)
+ * Primitives를 참조하여 컴포넌트별 의미 부여
+ */
+
+:root {
+  /* ========================================
+   * Heading
+   * ======================================== */
+  --heading-1-size: var(--font-size-4xl);
+  --heading-1-weight: var(--font-weight-bold);
+  --heading-1-line-height: var(--line-height-tight);
+
+  --heading-2-size: var(--font-size-3xl);
+  --heading-2-weight: var(--font-weight-bold);
+  --heading-2-line-height: var(--line-height-tight);
+
+  --heading-3-size: var(--font-size-2xl);
+  --heading-3-weight: var(--font-weight-semibold);
+  --heading-3-line-height: var(--line-height-snug);
+
+  --heading-4-size: var(--font-size-xl);
+  --heading-4-weight: var(--font-weight-semibold);
+  --heading-4-line-height: var(--line-height-snug);
+
+  /* ========================================
+   * Body Text
+   * ======================================== */
+  --body-size: var(--font-size-base);
+  --body-weight: var(--font-weight-normal);
+  --body-line-height: var(--line-height-normal);
+
+  --body-sm-size: var(--font-size-sm);
+  --body-sm-weight: var(--font-weight-normal);
+  --body-sm-line-height: var(--line-height-normal);
+
+  --body-lg-size: var(--font-size-lg);
+  --body-lg-weight: var(--font-weight-normal);
+  --body-lg-line-height: var(--line-height-relaxed);
+
+  /* ========================================
+   * Button Typography
+   * ======================================== */
+  --btn-font-size-sm: var(--font-size-sm);   /* 13px */
+  --btn-font-size-md: var(--font-size-base); /* 14px */
+  --btn-font-size-lg: var(--font-size-md);   /* 15px */
+  --btn-font-weight: var(--font-weight-normal);
+  --btn-line-height: var(--line-height-normal);
+
+  /* ========================================
+   * Input Typography
+   * ======================================== */
+  --input-font-size: var(--font-size-base);  /* 14px */
+  --input-font-weight: var(--font-weight-normal);
+  --input-line-height: var(--line-height-normal);
+
+  /* ========================================
+   * Label Typography
+   * ======================================== */
+  --label-font-size: var(--font-size-sm);    /* 13px */
+  --label-font-weight: var(--font-weight-bold);
+  --label-line-height: var(--line-height-normal);
+
+  /* ========================================
+   * Helper Text Typography
+   * ======================================== */
+  --helper-font-size: var(--font-size-sm);   /* 12px */
+  --helper-font-weight: var(--font-weight-normal);
+  --helper-line-height: var(--line-height-normal);
+
+  /* ========================================
+   * Badge Typography
+   * ======================================== */
+  --badge-font-size-sm: var(--font-size-xs);    /* 10px */
+  --badge-font-size-md: var(--font-size-sm);    /* 12px */
+  --badge-font-size-lg: 0.8125rem;              /* 13px */
+  --badge-font-weight: var(--font-weight-bold);
+  --badge-line-height: var(--line-height-none);
+
+  /* ========================================
+   * Card Typography
+   * ======================================== */
+  --card-title-size: var(--font-size-xl);       /* 18px */
+  --card-title-weight: var(--font-weight-medium);
+  --card-title-line-height: 1.6;
+
+  --card-subtitle-size: var(--font-size-base);  /* 14px */
+  --card-subtitle-weight: var(--font-weight-normal);
+  --card-subtitle-line-height: 1.43;
+
+  /* ========================================
+   * Modal Typography
+   * ======================================== */
+  --modal-title-size: var(--font-size-2xl);     /* 20px */
+  --modal-title-weight: var(--font-weight-medium);
+
+  /* ========================================
+   * Alert Typography
+   * ======================================== */
+  --alert-title-size: var(--font-size-md);      /* 15px */
+  --alert-title-weight: var(--font-weight-bold);
+  --alert-body-size: var(--font-size-base);     /* 14px */
+  --alert-body-line-height: var(--line-height-normal);
+
+  /* ========================================
+   * Table Typography
+   * ======================================== */
+  --table-header-size: var(--font-size-sm);     /* 12px */
+  --table-header-weight: var(--font-weight-medium);
+  --table-body-size: var(--font-size-base);     /* 14px */
+}

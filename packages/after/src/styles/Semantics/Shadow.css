@@ -1,0 +1,50 @@
+/*
+ * Semantic Shadow Tokens (의미 기반 그림자 토큰)
+ * Primitives를 참조하여 컴포넌트별 의미 부여
+ */
+
+:root {
+  /* ========================================
+   * Card Shadow
+   * ======================================== */
+  --card-shadow-default: var(--shadow-sm);
+  --card-shadow-elevated: var(--shadow-md);
+  --card-shadow-flat: var(--shadow-none);
+
+  /* ========================================
+   * Button Shadow
+   * ======================================== */
+  --btn-shadow: var(--shadow-none);
+  --btn-shadow-hover: var(--shadow-sm);
+
+  /* ========================================
+   * Input Shadow
+   * ======================================== */
+  --input-shadow: var(--shadow-none);
+  --input-shadow-focus: var(--shadow-sm);
+
+  /* ========================================
+   * Modal Shadow
+   * ======================================== */
+  --modal-shadow: var(--shadow-lg);
+
+  /* ========================================
+   * Dropdown Shadow
+   * ======================================== */
+  --dropdown-shadow: var(--shadow-lg);
+
+  /* ========================================
+   * Popover Shadow
+   * ======================================== */
+  --popover-shadow: var(--shadow-xl);
+
+  /* ========================================
+   * Toast Shadow
+   * ======================================== */
+  --toast-shadow: var(--shadow-xl);
+
+  /* ========================================
+   * Tooltip Shadow
+   * ======================================== */
+  --tooltip-shadow: var(--shadow-md);
+}
