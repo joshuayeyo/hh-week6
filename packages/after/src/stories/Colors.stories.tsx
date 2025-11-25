@@ -73,6 +73,7 @@ const ColorPalette = () => (
         { name: 'Destructive Hover', cssVar: '--destructive-hover' },
         { name: 'Destructive Foreground', cssVar: '--destructive-foreground' },
         { name: 'Destructive Light', cssVar: '--destructive-light' },
+        { name: 'Destructive Light Border', cssVar: '--destructive-light-border' },
         { name: 'Destructive Text', cssVar: '--destructive-text' },
       ]}
     />
