@@ -1,13 +1,5 @@
 import type { EntityType } from '../types'
-
-// 스타일 상수
-const TAB_BASE_STYLE = {
-  padding: '8px 16px',
-  fontSize: '14px',
-  border: '1px solid #999',
-  cursor: 'pointer',
-  borderRadius: '3px',
-} as const
+import { cn } from '@/lib/utils'
 
 // Props 타입 정의
 export interface EntityTabsProps {
@@ -17,20 +9,20 @@ export interface EntityTabsProps {
 
 // 엔티티 타입 전환 탭 컴포넌트
 export function EntityTabs({ entityType, onChange }: EntityTabsProps) {
-  const getTabStyle = (isActive: boolean) => ({
-    ...TAB_BASE_STYLE,
-    marginRight: isActive ? '5px' : '0',
-    fontWeight: isActive ? 'bold' : 'normal',
-    background: isActive ? '#1976d2' : '#f5f5f5',
-    color: isActive ? 'white' : '#333',
-  })
+  const tabClass = (isActive: boolean) =>
+    cn(
+      'px-4 py-2 text-sm border rounded cursor-pointer transition-colors',
+      isActive
+        ? 'bg-primary text-primary-foreground font-bold mr-1'
+        : 'bg-secondary text-secondary-foreground hover:bg-secondary-hover'
+    )
 
   return (
-    <div style={{ marginBottom: '15px', borderBottom: '2px solid #ccc', paddingBottom: '5px' }}>
-      <button onClick={() => onChange('post')} style={getTabStyle(entityType === 'post')}>
+    <div className="mb-4 border-b-2 border-border pb-2">
+      <button onClick={() => onChange('post')} className={tabClass(entityType === 'post')}>
         게시글
       </button>
-      <button onClick={() => onChange('user')} style={getTabStyle(entityType === 'user')}>
+      <button onClick={() => onChange('user')} className={tabClass(entityType === 'user')}>
         사용자
       </button>
     </div>

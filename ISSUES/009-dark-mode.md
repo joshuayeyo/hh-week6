@@ -12,27 +12,33 @@ Dark mode 지원 및 토글 버튼을 구현합니다.
 
 ### Task 9.1: Dark mode 기반 설정
 
-- [ ] CSS 변수 다크모드 값 추가
-- [ ] `prefers-color-scheme` 미디어 쿼리 적용
-- [ ] html `class="dark"` 토글 방식 구현
+- [x] CSS 변수 다크모드 값 추가 (이미 Semantics/Colors.css에 존재)
+- [x] `prefers-color-scheme` 미디어 쿼리 적용
+- [x] html `class="dark"` 토글 방식 구현
 
 ### Task 9.2: Theme Provider 구현
 
-- [ ] ThemeContext 생성
-- [ ] useTheme hook 생성
-- [ ] localStorage 연동
+- [x] ThemeContext 생성
+- [x] useTheme hook 생성
+- [x] localStorage 연동
 
 ### Task 9.3: Toggle 버튼 구현
 
-- [ ] ThemeToggle 컴포넌트 생성
-- [ ] Header에 토글 버튼 추가
-- [ ] 아이콘 (sun/moon) 적용
+- [x] ThemeToggle 컴포넌트 생성
+- [x] Header에 토글 버튼 추가
+- [x] 아이콘 (sun/moon) 적용
 
-### Task 9.4: 검증
+### Task 9.4: 하드코딩 스타일 변환
 
-- [ ] 라이트/다크 전환 동작 확인
-- [ ] 새로고침 후 설정 유지 확인
-- [ ] Storybook에서 확인
+- [x] ManagementPage 인라인 스타일 → Tailwind 클래스
+- [x] EntityTabs 하드코딩 색상 → Tailwind 클래스
+- [x] StatsGrid 하드코딩 색상 → Tailwind 클래스
+
+### Task 9.5: 검증
+
+- [x] 라이트/다크 전환 동작 확인
+- [x] 새로고침 후 설정 유지 확인
+- [x] Storybook에서 확인
 
 ## ETC
 

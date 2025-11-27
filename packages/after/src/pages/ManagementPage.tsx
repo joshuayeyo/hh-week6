@@ -9,10 +9,10 @@ import { EntityTabs, StatsGrid, EntityFormFields, EntityTable } from './manageme
 import type { EntityType, FormData } from './management/types'
 import '../styles/components.css'
 
-// 스타일 상수
-const PAGE_STYLE = { minHeight: '100vh', background: '#f0f0f0' }
-const CONTAINER_STYLE = { maxWidth: '1200px', margin: '0 auto', padding: '20px' }
-const CARD_STYLE = { background: 'white', border: '1px solid #ddd', padding: '10px' }
+// 스타일 상수 (Tailwind 클래스 사용)
+const PAGE_CLASS = 'min-h-screen bg-background-secondary'
+const CONTAINER_CLASS = 'max-w-6xl mx-auto p-5'
+const CARD_CLASS = 'bg-card border border-border p-4 rounded-md'
 
 // 관리 페이지 컴포넌트
 export function ManagementPage() {
@@ -62,10 +62,10 @@ export function ManagementPage() {
   }
 
   return (
-    <div style={PAGE_STYLE}>
-      <div style={CONTAINER_STYLE}>
+    <div className={PAGE_CLASS}>
+      <div className={CONTAINER_CLASS}>
         <PageHeader />
-        <div style={CARD_STYLE}>
+        <div className={CARD_CLASS}>
           <EntityTabs entityType={entityType} onChange={setEntityType} />
           <div style={{ marginBottom: '15px', textAlign: 'right' }}>
             <Button variant="default" size="default" onClick={openCreate}>새로 만들기</Button>
@@ -107,11 +107,11 @@ export function ManagementPage() {
 // 페이지 헤더
 function PageHeader() {
   return (
-    <div style={{ marginBottom: '20px' }}>
-      <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', color: '#333' }}>
+    <div className="mb-5">
+      <h1 className="text-2xl font-bold mb-1 text-foreground">
         관리 시스템
       </h1>
-      <p style={{ color: '#666', fontSize: '14px' }}>사용자와 게시글을 관리하세요</p>
+      <p className="text-muted-foreground text-sm">사용자와 게시글을 관리하세요</p>
     </div>
   )
 }
