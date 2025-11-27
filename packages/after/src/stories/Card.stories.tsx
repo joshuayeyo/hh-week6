@@ -1,96 +1,117 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import '../styles/components.css'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@/components/layout'
+import { Button } from '@/components/primitives'
 
 /**
  * Card 컴포넌트 스토리
- * 디자인 토큰 적용 검증용
+ * shadcn/ui + CVA 기반 순수 UI 컴포넌트
  */
 
-const meta: Meta = {
+const meta: Meta<typeof Card> = {
   title: 'Components/Card',
+  component: Card,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'elevated', 'outline'],
+    },
   },
 }
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<typeof meta>
 
-// 카드 Variants
+// 기본 카드
+export const Default: Story = {
+  render: () => (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card content with some example text.</p>
+      </CardContent>
+    </Card>
+  ),
+}
+
+// Variants
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '800px' }}>
-      <div className="card card-default">
-        <div className="card-header">
-          <h3 className="card-title">Default Card</h3>
-        </div>
-        <div className="card-body">
-          <p>기본 카드 스타일입니다. box-shadow와 border가 적용됩니다.</p>
-        </div>
-      </div>
+    <div className="flex flex-col gap-4">
+      <Card variant="default" className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Default</CardTitle>
+          <CardDescription>기본 스타일 카드</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>shadow-sm 적용</p>
+        </CardContent>
+      </Card>
 
-      <div className="card card-bordered">
-        <div className="card-header">
-          <h3 className="card-title">Bordered Card</h3>
-        </div>
-        <div className="card-body">
-          <p>테두리만 있는 플랫한 카드 스타일입니다.</p>
-        </div>
-      </div>
+      <Card variant="elevated" className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Elevated</CardTitle>
+          <CardDescription>강조된 카드</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>shadow-md 적용</p>
+        </CardContent>
+      </Card>
 
-      <div className="card card-elevated">
-        <div className="card-header">
-          <h3 className="card-title">Elevated Card</h3>
-        </div>
-        <div className="card-body">
-          <p>높은 고도의 그림자가 적용된 카드입니다.</p>
-        </div>
-      </div>
-
-      <div className="card card-flat">
-        <div className="card-header">
-          <h3 className="card-title">Flat Card</h3>
-        </div>
-        <div className="card-body">
-          <p>배경색만 다른 완전히 플랫한 카드입니다.</p>
-        </div>
-      </div>
+      <Card variant="outline" className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Outline</CardTitle>
+          <CardDescription>테두리만 있는 카드</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>shadow 없음</p>
+        </CardContent>
+      </Card>
     </div>
   ),
 }
 
-// 카드 with Subtitle
-export const WithSubtitle: Story = {
+// Footer 포함
+export const WithFooter: Story = {
   render: () => (
-    <div style={{ maxWidth: '400px' }}>
-      <div className="card card-default">
-        <div className="card-header">
-          <div>
-            <h3 className="card-title">Card Title</h3>
-            <p className="card-subtitle">Card subtitle goes here</p>
-          </div>
-        </div>
-        <div className="card-body">
-          <p>카드 본문 내용입니다. 디자인 토큰이 적용된 타이포그래피를 확인할 수 있습니다.</p>
-        </div>
-      </div>
-    </div>
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>계정 생성</CardTitle>
+        <CardDescription>새로운 계정을 만들어 시작하세요.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground">
+          이용약관에 동의하시면 계정이 생성됩니다.
+        </p>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline">취소</Button>
+        <Button>확인</Button>
+      </CardFooter>
+    </Card>
   ),
 }
 
-// 카드 with Action
-export const WithAction: Story = {
+// 컨텐츠만 있는 카드
+export const ContentOnly: Story = {
   render: () => (
-    <div style={{ maxWidth: '400px' }}>
-      <div className="card card-default">
-        <div className="card-header">
-          <h3 className="card-title">Card with Action</h3>
-          <button className="btn btn-primary btn-sm">Action</button>
-        </div>
-        <div className="card-body">
-          <p>헤더에 액션 버튼이 있는 카드입니다.</p>
-        </div>
-      </div>
-    </div>
+    <Card className="w-[350px]">
+      <CardContent className="pt-6">
+        <p>헤더 없이 컨텐츠만 있는 카드입니다.</p>
+      </CardContent>
+    </Card>
   ),
 }
