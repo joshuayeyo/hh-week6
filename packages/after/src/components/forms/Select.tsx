@@ -12,7 +12,7 @@ const selectVariants = cva(
         default: "border-input",
         error: "border-destructive focus-visible:ring-destructive",
       },
-      selectSize: {
+      size: {
         default: "h-9",
         sm: "h-8 text-xs",
         lg: "h-10",
@@ -20,22 +20,20 @@ const selectVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      selectSize: "default",
+      size: "default",
     },
   }
 )
 
-function Select({
-  className,
-  variant,
-  selectSize,
-  children,
-  ...props
-}: React.ComponentProps<"select"> & VariantProps<typeof selectVariants>) {
+interface SelectProps
+  extends Omit<React.ComponentProps<"select">, "size">,
+    VariantProps<typeof selectVariants> {}
+
+function Select({ className, variant, size, children, ...props }: SelectProps) {
   return (
     <select
       data-slot="select"
-      className={cn(selectVariants({ variant, selectSize }), className)}
+      className={cn(selectVariants({ variant, size }), className)}
       {...props}
     >
       {children}
@@ -43,10 +41,7 @@ function Select({
   )
 }
 
-function SelectOption({
-  className,
-  ...props
-}: React.ComponentProps<"option">) {
+function SelectOption({ className, ...props }: React.ComponentProps<"option">) {
   return <option className={cn(className)} {...props} />
 }
 

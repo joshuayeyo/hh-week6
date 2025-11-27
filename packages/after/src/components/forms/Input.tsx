@@ -12,7 +12,7 @@ const inputVariants = cva(
         default: "border-input",
         error: "border-destructive focus-visible:ring-destructive",
       },
-      inputSize: {
+      size: {
         default: "h-9",
         sm: "h-8 text-xs",
         lg: "h-10",
@@ -20,23 +20,21 @@ const inputVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      inputSize: "default",
+      size: "default",
     },
   }
 )
 
-function Input({
-  className,
-  variant,
-  inputSize,
-  type,
-  ...props
-}: React.ComponentProps<"input"> & VariantProps<typeof inputVariants>) {
+interface InputProps
+  extends Omit<React.ComponentProps<"input">, "size">,
+    VariantProps<typeof inputVariants> {}
+
+function Input({ className, variant, size, type, ...props }: InputProps) {
   return (
     <input
       data-slot="input"
       type={type}
-      className={cn(inputVariants({ variant, inputSize }), className)}
+      className={cn(inputVariants({ variant, size }), className)}
       {...props}
     />
   )

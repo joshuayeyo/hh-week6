@@ -23,29 +23,46 @@ interface CheckboxProps
   extends Omit<React.ComponentProps<"input">, "type">,
     VariantProps<typeof checkboxVariants> {}
 
-function Checkbox({ className, variant, checked, ...props }: CheckboxProps) {
+function Checkbox({
+  className,
+  variant,
+  checked,
+  defaultChecked,
+  id,
+  ...props
+}: CheckboxProps) {
+  // controlled 또는 uncontrolled 모두 지원
+  const isChecked = checked ?? defaultChecked ?? false
+
   return (
-    <div className="relative flex items-center">
+    <label className="relative inline-flex items-center cursor-pointer">
       <input
         data-slot="checkbox"
         type="checkbox"
-        data-state={checked ? "checked" : "unchecked"}
-        className={cn(checkboxVariants({ variant }), className)}
+        id={id}
+        data-state={isChecked ? "checked" : "unchecked"}
+        className={cn(
+          checkboxVariants({ variant }),
+          "appearance-none cursor-pointer",
+          className
+        )}
         checked={checked}
+        defaultChecked={defaultChecked}
         {...props}
       />
-      {checked && (
-        <svg
-          className="absolute left-0 size-4 pointer-events-none text-primary-foreground"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={3}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
-      )}
-    </div>
+      <svg
+        className={cn(
+          "absolute left-0 size-4 pointer-events-none text-primary-foreground transition-opacity",
+          isChecked ? "opacity-100" : "opacity-0"
+        )}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={3}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </label>
   )
 }
 

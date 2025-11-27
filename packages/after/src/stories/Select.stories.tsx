@@ -19,7 +19,7 @@ const meta: Meta<typeof Select> = {
       control: 'select',
       options: ['default', 'error'],
     },
-    selectSize: {
+    size: {
       control: 'select',
       options: ['default', 'sm', 'lg'],
     },
@@ -76,21 +76,21 @@ export const Sizes: Story = {
     <div className="flex flex-col gap-4 w-[250px]">
       <div className="space-y-2">
         <Label>Small</Label>
-        <Select selectSize="sm" defaultValue="option1">
+        <Select size="sm" defaultValue="option1">
           <SelectOption value="option1">Small Select</SelectOption>
           <SelectOption value="option2">Option 2</SelectOption>
         </Select>
       </div>
       <div className="space-y-2">
         <Label>Default</Label>
-        <Select selectSize="default" defaultValue="option1">
+        <Select size="default" defaultValue="option1">
           <SelectOption value="option1">Default Select</SelectOption>
           <SelectOption value="option2">Option 2</SelectOption>
         </Select>
       </div>
       <div className="space-y-2">
         <Label>Large</Label>
-        <Select selectSize="lg" defaultValue="option1">
+        <Select size="lg" defaultValue="option1">
           <SelectOption value="option1">Large Select</SelectOption>
           <SelectOption value="option2">Option 2</SelectOption>
         </Select>

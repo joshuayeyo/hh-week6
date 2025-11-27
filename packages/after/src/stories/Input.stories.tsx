@@ -19,7 +19,7 @@ const meta: Meta<typeof Input> = {
       control: 'select',
       options: ['default', 'error'],
     },
-    inputSize: {
+    size: {
       control: 'select',
       options: ['default', 'sm', 'lg'],
     },
@@ -61,15 +61,15 @@ export const Sizes: Story = {
     <div className="flex flex-col gap-4 w-[300px]">
       <div className="space-y-2">
         <Label>Small</Label>
-        <Input placeholder="Small input" inputSize="sm" />
+        <Input placeholder="Small input" size="sm" />
       </div>
       <div className="space-y-2">
         <Label>Default</Label>
-        <Input placeholder="Default input" inputSize="default" />
+        <Input placeholder="Default input" size="default" />
       </div>
       <div className="space-y-2">
         <Label>Large</Label>
-        <Input placeholder="Large input" inputSize="lg" />
+        <Input placeholder="Large input" size="lg" />
       </div>
     </div>
   ),
