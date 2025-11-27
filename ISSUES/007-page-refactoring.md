@@ -105,6 +105,35 @@ import { Modal, ModalOverlay, ModalContent, ... } from '@/components/layout';
 import { Input, Select, Textarea, Label } from '@/components/forms';
 ```
 
+### 폴더 구조 결정 사유
+
+**질문**: `pages/management/` 안에 hooks, components를 두는 이유?
+`src/hooks/`, `src/components/`에 두지 않은 이유는?
+
+**답변**: Feature-based 구조 채택
+
+```
+src/
+├── components/     # 공용 UI 컴포넌트 (Button, Modal, Table 등)
+├── hooks/          # 공용 hooks (비어있음 - 아직 공용 hook 없음)
+└── pages/
+    └── management/
+        ├── hooks/       # ManagementPage 전용 hooks
+        ├── components/  # ManagementPage 전용 컴포넌트
+        └── constants/   # ManagementPage 전용 상수
+```
+
+**이유**:
+1. **응집도**: management hooks/components는 ManagementPage에서만 사용됨
+2. **명확한 경계**: 페이지 전용 로직과 공용 UI 컴포넌트 분리
+3. **스케일링**: 새 페이지 추가 시 `pages/new-page/` 구조 복제 가능
+4. **삭제 용이**: 페이지 삭제 시 관련 코드 일괄 제거 가능
+
+**공용 vs 페이지 전용 기준**:
+- `src/components/`: 2개 이상 페이지에서 재사용되는 UI
+- `src/hooks/`: 2개 이상 페이지에서 재사용되는 로직
+- `pages/[name]/`: 해당 페이지에서만 사용되는 코드
+
 ### 참고 문서
 
 - CLAUDE.md: 80줄 제한, 함수 15-20줄 제한
