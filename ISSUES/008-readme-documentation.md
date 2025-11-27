@@ -12,23 +12,23 @@ README.md에 before/after 비교 및 개선사항을 문서화합니다.
 
 ### Task 8.1: Before/After 비교 문서 작성
 
-- [ ] 컴포넌트 구조 비교 (Atomic Design → Category-based)
-- [ ] 스타일링 방식 비교 (inline/CSS → TailwindCSS + CVA)
-- [ ] 타입 안전성 비교
-- [ ] API 일관성 비교
+- [x] 컴포넌트 구조 비교 (Atomic Design → Category-based)
+- [x] 스타일링 방식 비교 (inline/CSS → TailwindCSS + CVA)
+- [x] 타입 안전성 비교
+- [x] API 일관성 비교
 
 ### Task 8.2: 주요 개선사항 정리
 
-- [ ] shadcn/ui + CVA 도입 효과
-- [ ] Props 타입 분리 패턴
-- [ ] Feature-based 폴더 구조
-- [ ] ManagementPage 리팩토링 결과 (648줄 → 150줄)
+- [x] shadcn/ui + CVA 도입 효과
+- [x] Props 타입 분리 패턴
+- [x] Feature-based 폴더 구조
+- [x] ManagementPage 리팩토링 결과 (647줄 → 150줄)
 
 ### Task 8.3: 실행 방법 문서화
 
-- [ ] 개발 서버 실행
-- [ ] Storybook 실행
-- [ ] 빌드 방법
+- [x] 개발 서버 실행
+- [x] Storybook 실행
+- [x] 빌드 방법
 
 ## ETC
 

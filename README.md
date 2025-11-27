@@ -203,10 +203,10 @@ export const Primary: Story = {
 ## 5. 과제 제출
 
 ### 필수 구현 사항
-- [ ] after 패키지에 디자인 시스템 구현 완료
-- [ ] PostManagement 페이지 마이그레이션 완료
-- [ ] Storybook에 주요 컴포넌트 stories 작성
-- [ ] README에 before/after 비교 및 개선사항 문서화
+- [x] after 패키지에 디자인 시스템 구현 완료
+- [x] PostManagement 페이지 마이그레이션 완료
+- [x] Storybook에 주요 컴포넌트 stories 작성
+- [x] README에 before/after 비교 및 개선사항 문서화
 
 ### 심화 구현 사항
 - [ ] Dark mode 지원
@@ -226,6 +226,227 @@ export const Primary: Story = {
 ---
 
 **이 프로젝트를 통해 레거시 시스템의 문제점을 이해하고, 현대적인 디자인 시스템 구축 능력을 습득하세요!**
+
+---
+
+## 7. Before/After 비교 및 개선사항
+
+### 7.1 컴포넌트 구조 비교
+
+#### Before (Atomic Design - 문제점)
+```
+components/
+├── atoms/        # Button, Badge
+├── molecules/    # FormInput, FormSelect, FormTextarea
+└── organisms/    # Header, Card, Modal, Table, Alert
+```
+
+**문제점**:
+- 분류 기준이 모호 (Card는 atom? molecule?)
+- import 경로가 김 (`../../../components/atoms/Button`)
+- 컴포넌트 이동 시 모든 import 수정 필요
+- UI 컴포넌트에 비즈니스 로직 혼재
+
+#### After (Category-based + Feature-based)
+```
+components/
+├── primitives/   # Button, Badge (기본 요소)
+├── layout/       # Header, Card, Modal (레이아웃)
+├── feedback/     # Alert (피드백)
+├── data/         # Table (데이터 표시)
+└── forms/        # Input, Select, Textarea, Checkbox, Label
+
+pages/
+└── management/
+    ├── hooks/       # 페이지 전용 hooks
+    ├── components/  # 페이지 전용 컴포넌트
+    └── constants/   # 페이지 전용 상수
+```
+
+**개선점**:
+- 역할 기반 분류로 직관적
+- `@/components/primitives` alias 사용
+- 순수 UI와 도메인 로직 분리
+- 페이지 전용 코드는 pages/ 하위에 응집
+
+### 7.2 스타일링 방식 비교
+
+#### Before (인라인 스타일 + 하드코딩)
+```tsx
+// 하드코딩된 색상값
+<span style={{ color: '#d32f2f' }}>*</span>
+
+// 조건부 클래스 수동 조합
+const classes = [
+  'btn',
+  `btn-${variant}`,
+  `btn-${size}`,
+  fullWidth && 'btn-fullwidth',
+].filter(Boolean).join(' ');
+```
+
+#### After (TailwindCSS + CVA)
+```tsx
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground",
+        outline: "border border-input bg-background hover:bg-accent",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 px-3 text-xs",
+        lg: "h-10 px-8",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+// 사용
+<Button variant="destructive" size="sm">삭제</Button>
+```
+
+**개선점**:
+- 디자인 토큰 기반 (CSS 변수)
+- 타입 안전한 variants (VariantProps)
+- 일관된 spacing, colors, typography
+
+### 7.3 컴포넌트 API 비교
+
+#### Before (비일관적 Props)
+```tsx
+// 각 컴포넌트마다 다른 props 이름
+<FormInput width="full" helpText="도움말" fieldType="username" />
+<FormSelect size="md" help="다른 이름" />
+<FormTextarea variant="bordered" description="또 다른 이름" />
+
+// UI 컴포넌트에 비즈니스 로직 포함
+<Button
+  entityType="post"
+  action="publish"
+  entity={post}  // 비즈니스 규칙 판단
+/>
+```
+
+#### After (일관된 Props)
+```tsx
+// 모든 컴포넌트 동일한 패턴
+<Input variant="default" size="sm" />
+<Select variant="default" size="sm" />
+<Textarea variant="default" />
+
+// 순수 UI - 비즈니스 로직 없음
+<Button variant="default" size="sm" onClick={handlePublish}>
+  게시
+</Button>
+```
+
+**개선점**:
+- shadcn/ui 표준 `variant`, `size` 사용
+- Props 타입 `src/types/`에서 중앙 관리
+- UI 컴포넌트는 순수 렌더링만 담당
+
+### 7.4 페이지 구조 비교
+
+#### Before (647줄 단일 파일)
+```tsx
+// ManagementPage.tsx - 647줄
+// 상태 관리 (10+ useState)
+// 데이터 로드 로직
+// CRUD 핸들러
+// 통계 계산 로직
+// 테이블 컬럼 정의
+// 렌더링 (모달 2개 포함)
+```
+
+#### After (150줄 + 분리된 모듈)
+```
+ManagementPage.tsx (150줄)
+└── management/
+    ├── hooks/
+    │   ├── useEntityData.ts   # CRUD 로직
+    │   ├── useEntityForm.ts   # 폼 상태
+    │   └── useAlert.ts        # 알림 상태
+    ├── components/
+    │   ├── EntityTabs.tsx     # 탭 UI
+    │   ├── StatsGrid.tsx      # 통계 카드
+    │   ├── EntityTable.tsx    # 테이블
+    │   └── EntityFormFields.tsx # 폼 필드
+    └── constants/
+        └── tableColumns.ts    # 컬럼 정의
+```
+
+**개선점**:
+- 80줄 제한 준수 (CLAUDE.md 표준)
+- 단일 책임 원칙 적용
+- 테스트 용이성 향상
+- 재사용 가능한 hooks
+
+### 7.5 타입 안전성 비교
+
+#### Before
+```tsx
+// 느슨한 타입
+entity?: any;
+fieldType?: 'username' | 'email' | 'postTitle' | 'slug' | 'normal';
+```
+
+#### After
+```tsx
+// Props 중앙 관리
+// src/types/primitives.types.ts
+export type { ButtonProps } from '@/components/primitives/Button'
+
+// 컴포넌트에서 정의
+export type ButtonProps = ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
+```
+
+**개선점**:
+- `ComponentProps<"element">` 활용
+- CVA `VariantProps` 자동 추론
+- Props 타입 re-export 패턴
+
+---
+
+## 8. 실행 방법
+
+### 개발 서버
+```bash
+# after 패키지
+cd packages/after
+npm install
+npm run dev
+```
+
+### Storybook
+```bash
+cd packages/after
+npm run storybook
+```
+
+### 빌드
+```bash
+cd packages/after
+npm run build
+```
+
+### 테스트
+```bash
+cd packages/after
+npm run test
+```
+
+---
 
 ## 참고 자료
 
