@@ -19,9 +19,9 @@ const checkboxVariants = cva(
   }
 )
 
-interface CheckboxProps
-  extends Omit<React.ComponentProps<"input">, "type">,
-    VariantProps<typeof checkboxVariants> {}
+// Props 타입 정의
+export type CheckboxProps = Omit<React.ComponentProps<"input">, "type"> &
+  VariantProps<typeof checkboxVariants>
 
 function Checkbox({
   className,

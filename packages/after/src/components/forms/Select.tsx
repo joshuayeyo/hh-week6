@@ -25,9 +25,11 @@ const selectVariants = cva(
   }
 )
 
-interface SelectProps
-  extends Omit<React.ComponentProps<"select">, "size">,
-    VariantProps<typeof selectVariants> {}
+// Props 타입 정의
+export type SelectProps = Omit<React.ComponentProps<"select">, "size"> &
+  VariantProps<typeof selectVariants>
+
+export type SelectOptionProps = React.ComponentProps<"option">
 
 function Select({ className, variant, size, children, ...props }: SelectProps) {
   return (
@@ -41,7 +43,7 @@ function Select({ className, variant, size, children, ...props }: SelectProps) {
   )
 }
 
-function SelectOption({ className, ...props }: React.ComponentProps<"option">) {
+function SelectOption({ className, ...props }: SelectOptionProps) {
   return <option className={cn(className)} {...props} />
 }
 

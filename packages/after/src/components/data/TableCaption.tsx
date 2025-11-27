@@ -1,8 +1,11 @@
-import * as React from "react"
+/* eslint-disable react-refresh/only-export-components */
+import type { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+export type TableCaptionProps = ComponentProps<"caption">
+
+function TableCaption({ className, ...props }: TableCaptionProps) {
   return (
     <caption
       data-slot="table-caption"

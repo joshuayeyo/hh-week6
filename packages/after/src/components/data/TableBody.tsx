@@ -1,8 +1,11 @@
-import * as React from "react"
+/* eslint-disable react-refresh/only-export-components */
+import type { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+export type TableBodyProps = ComponentProps<"tbody">
+
+function TableBody({ className, ...props }: TableBodyProps) {
   return (
     <tbody
       data-slot="table-body"

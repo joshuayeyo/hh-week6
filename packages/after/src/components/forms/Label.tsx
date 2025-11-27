@@ -19,11 +19,11 @@ const labelVariants = cva(
   }
 )
 
-function Label({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"label"> & VariantProps<typeof labelVariants>) {
+// Props 타입 정의
+export type LabelProps = React.ComponentProps<"label"> &
+  VariantProps<typeof labelVariants>
+
+function Label({ className, variant, ...props }: LabelProps) {
   return (
     <label
       data-slot="label"
