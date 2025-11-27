@@ -209,8 +209,8 @@ export const Primary: Story = {
 - [x] README에 before/after 비교 및 개선사항 문서화
 
 ### 심화 구현 사항
-- [ ] Dark mode 지원
-- [ ] Dark mode toggle 버튼
+- [x] Dark mode 지원
+- [x] Dark mode toggle 버튼
 
 ## 6. 그밖에 해보면 좋을 것들
 > 분량상 이번 과제에는 포함하지 않았지만, 실무에서 자주 쓰이는 패턴들입니다. 시간 여유가 된다면 도전해보세요!
