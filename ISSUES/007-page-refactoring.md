@@ -134,6 +134,49 @@ src/
 - `src/hooks/`: 2개 이상 페이지에서 재사용되는 로직
 - `pages/[name]/`: 해당 페이지에서만 사용되는 코드
 
+### Barrel Export 규칙
+
+`index.ts` 파일을 통한 re-export 관리 규칙:
+
+**컴포넌트 추가 시**:
+1. 컴포넌트 파일 생성 (`ComponentName.tsx`)
+2. Props 타입 정의 및 `export` (`export type ComponentNameProps = ...`)
+3. `index.ts`에 컴포넌트 export 추가
+4. `src/types/[category].types.ts`에 Props re-export 추가
+
+**예시**:
+```typescript
+// components/primitives/NewButton.tsx
+export type NewButtonProps = ComponentProps<"button">
+function NewButton({ ...props }: NewButtonProps) { ... }
+export { NewButton }
+
+// components/primitives/index.ts
+export { NewButton } from './NewButton'
+
+// types/primitives.types.ts
+export type { NewButtonProps } from '@/components/primitives/NewButton'
+```
+
+**주의사항**:
+- 파일 생성 시 반드시 index.ts 업데이트
+- Props 타입은 컴포넌트 파일에서 정의, types/에서 re-export
+- 순환 의존성 방지를 위해 types 파일에서 variants import 금지
+
+### Props Naming Convention
+
+shadcn/ui 표준 naming 사용:
+
+| Prop | 설명 | 예시 값 |
+|------|------|---------|
+| `variant` | 스타일 변형 | `default`, `destructive`, `outline`, `secondary` |
+| `size` | 크기 변형 | `default`, `sm`, `lg`, `icon` |
+
+**규칙**:
+- `inputSize`, `buttonVariant` 등 prefix 사용 금지
+- 모든 컴포넌트에서 동일한 naming 유지
+- CVA의 `VariantProps`를 통해 타입 자동 추론
+
 ### 참고 문서
 
 - CLAUDE.md: 80줄 제한, 함수 15-20줄 제한

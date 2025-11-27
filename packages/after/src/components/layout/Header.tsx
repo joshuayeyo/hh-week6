@@ -33,6 +33,13 @@ export type HeaderLogoProps = ComponentProps<"div">
 export type HeaderNavProps = ComponentProps<"nav">
 export type HeaderActionsProps = ComponentProps<"div">
 
+/**
+ * Header 컴포넌트 - 페이지 상단 헤더 컨테이너
+ * @slot header-content - 내부 컨텐츠 래퍼 (max-width, padding 적용)
+ * @slot header-logo - 좌측 로고/브랜드 영역
+ * @slot header-nav - 중앙 네비게이션 링크 영역
+ * @slot header-actions - 우측 액션 버튼 영역
+ */
 function Header({ className, variant, position, ...props }: HeaderProps) {
   return (
     <header
@@ -43,6 +50,7 @@ function Header({ className, variant, position, ...props }: HeaderProps) {
   )
 }
 
+/** 내부 컨텐츠 래퍼 - max-width 제한 및 반응형 padding 적용 */
 function HeaderContent({ className, ...props }: HeaderContentProps) {
   return (
     <div
@@ -56,6 +64,7 @@ function HeaderContent({ className, ...props }: HeaderContentProps) {
   )
 }
 
+/** 좌측 로고/브랜드 영역 - 아이콘 + 텍스트 배치용 */
 function HeaderLogo({ className, ...props }: HeaderLogoProps) {
   return (
     <div
@@ -66,6 +75,7 @@ function HeaderLogo({ className, ...props }: HeaderLogoProps) {
   )
 }
 
+/** 중앙 네비게이션 영역 - 링크/메뉴 배치용 */
 function HeaderNav({ className, ...props }: HeaderNavProps) {
   return (
     <nav
@@ -76,6 +86,7 @@ function HeaderNav({ className, ...props }: HeaderNavProps) {
   )
 }
 
+/** 우측 액션 영역 - 버튼/유저 정보 배치용 */
 function HeaderActions({ className, ...props }: HeaderActionsProps) {
   return (
     <div

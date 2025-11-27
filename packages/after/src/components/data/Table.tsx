@@ -22,6 +22,15 @@ const tableVariants = cva(
 // Props 타입 정의
 export type TableProps = ComponentProps<"table"> & VariantProps<typeof tableVariants>
 
+/**
+ * Table 컴포넌트 - 데이터 테이블 컨테이너
+ * @example
+ * // 기본 테이블
+ * <Table>...</Table>
+ *
+ * // Striped 테이블 (짝수 행 배경색)
+ * <Table variant="striped">...</Table>
+ */
 function Table({ className, variant, ...props }: TableProps) {
   return (
     <div className="relative w-full overflow-auto">
