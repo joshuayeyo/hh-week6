@@ -9,7 +9,7 @@ shadcn/ui를 설치하고 기본 UI 컴포넌트(Button, Badge, Alert)를 구현
 - Button 컴포넌트 구현 (CVA variants)
 - Badge 컴포넌트 구현
 - Alert 컴포넌트 구현
-- 기존 atoms/molecules/organisms 폴더 구조를 components/ui로 변경
+- 기존 atoms/molecules/organisms 폴더 구조를 카테고리별 구조로 변경
 
 **선행 작업**: Issue 004 (디자인 토큰 확장)
 
@@ -17,44 +17,51 @@ shadcn/ui를 설치하고 기본 UI 컴포넌트(Button, Badge, Alert)를 구현
 
 ### Task 5.1: shadcn/ui 초기화
 
-- [ ] `npx shadcn@latest init` 실행
-- [ ] components.json 설정 확인
-- [ ] 기존 components 폴더 백업 또는 삭제
+- [x] `npx shadcn@latest init` 실행
+- [x] components.json 설정 확인
+- [x] 기존 components 폴더 백업 또는 삭제
 
 ### Task 5.2: Button 컴포넌트 구현
 
-- [ ] `npx shadcn@latest add button` 실행
-- [ ] 도메인 로직 제거 (entityType, action, entity props 제거)
-- [ ] CVA variants 정의: default, destructive, outline, secondary, ghost, link
-- [ ] CVA sizes 정의: default, sm, lg, icon
-- [ ] Button.stories.tsx 업데이트 (기존 스토리와 통합)
+- [x] `npx shadcn@latest add button` 실행
+- [x] 도메인 로직 제거 (entityType, action, entity props 제거)
+- [x] CVA variants 정의: default, destructive, outline, secondary, ghost, link
+- [x] CVA sizes 정의: default, sm, lg, icon
+- [x] Button.stories.tsx 업데이트 (기존 스토리와 통합)
 
 ### Task 5.3: Badge 컴포넌트 구현
 
-- [ ] `npx shadcn@latest add badge` 실행
-- [ ] 도메인 로직 제거 (status, userRole, priority, paymentStatus props 제거)
-- [ ] CVA variants 정의: default, secondary, destructive, outline
-- [ ] Badge.stories.tsx 업데이트
+- [x] `npx shadcn@latest add badge` 실행
+- [x] 도메인 로직 제거 (status, userRole, priority, paymentStatus props 제거)
+- [x] CVA variants 정의: default, secondary, destructive, outline
+- [x] Badge.stories.tsx 업데이트
 
 ### Task 5.4: Alert 컴포넌트 구현
 
-- [ ] `npx shadcn@latest add alert` 실행
-- [ ] 접근성 개선 (role="alert" 확인)
-- [ ] variants 정의: default, destructive, success, warning
-- [ ] AlertTitle, AlertDescription 분리
-- [ ] Alert.stories.tsx 업데이트
+- [x] `npx shadcn@latest add alert` 실행
+- [x] 접근성 개선 (role="alert" 확인)
+- [x] variants 정의: default, destructive
+- [x] AlertTitle, AlertDescription 분리
+- [x] Alert.stories.tsx 업데이트
 
 ### Task 5.5: 폴더 구조 정리
 
-- [ ] 기존 atoms/, molecules/, organisms/ 폴더 삭제
-- [ ] components/ui/ 구조로 통합
-- [ ] index.ts export 정리
+- [x] 기존 atoms/, organisms/, ui/ 폴더 삭제
+- [x] 카테고리별 구조로 재구성 (primitives, feedback, layout, data)
+- [x] index.ts export 정리
 
-### Task 5.6: 검증
+### Task 5.6: 추가 컴포넌트 구현
 
-- [ ] Storybook에서 컴포넌트 확인
-- [ ] TypeScript 에러 없음 확인
-- [ ] 기존 스토리와의 호환성 확인
+- [x] Card 컴포넌트 CVA 기반 구현 (layout/)
+- [x] Header 컴포넌트 CVA 기반 구현 (layout/)
+- [x] Modal 컴포넌트 CVA 기반 구현 (layout/)
+- [x] Table 컴포넌트 CVA 기반 구현 (data/, 파일별 분리)
+
+### Task 5.7: 검증
+
+- [x] Storybook에서 컴포넌트 확인
+- [x] TypeScript 에러 없음 확인
+- [x] 기존 스토리와의 호환성 확인
 
 ## ETC
 
@@ -82,6 +89,17 @@ shadcn/ui를 설치하고 기본 UI 컴포넌트(Button, Badge, Alert)를 구현
 </Button>
 ```
 
+### 최종 폴더 구조
+
+```
+components/
+├── primitives/   # Button, Badge
+├── feedback/     # Alert
+├── layout/       # Card, Header, Modal
+├── data/         # Table (파일별 분리)
+└── molecules/    # Form 컴포넌트 (미정리 - Issue 006)
+```
+
 ### 참고 문서
 
 - [shadcn/ui 공식 문서](https://ui.shadcn.com/)
@@ -91,4 +109,3 @@ shadcn/ui를 설치하고 기본 UI 컴포넌트(Button, Badge, Alert)를 구현
 ### 다음 단계
 
 - Issue 006: Form 컴포넌트 마이그레이션 (Input, Select, Textarea, Form)
-- Issue 007: 복합 컴포넌트 마이그레이션 (Card, Dialog, Table)
