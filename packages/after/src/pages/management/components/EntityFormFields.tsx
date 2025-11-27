@@ -18,6 +18,7 @@ function UserFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
       <div className="space-y-2 mb-4">
         <Label>사용자명</Label>
         <Input
+          name="username"
           value={data.username || ''}
           onChange={(e) => onChange('username', e.target.value)}
           placeholder="사용자명을 입력하세요"
@@ -26,6 +27,7 @@ function UserFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
       <div className="space-y-2 mb-4">
         <Label>이메일</Label>
         <Input
+          name="email"
           type="email"
           value={data.email || ''}
           onChange={(e) => onChange('email', e.target.value)}
@@ -35,7 +37,11 @@ function UserFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <div className="space-y-2">
           <Label>역할</Label>
-          <Select value={data.role || 'user'} onChange={(e) => onChange('role', e.target.value)}>
+          <Select
+            name="role"
+            value={data.role || 'user'}
+            onChange={(e) => onChange('role', e.target.value)}
+          >
             {ROLE_OPTIONS.map(opt => (
               <SelectOption key={opt.value} value={opt.value}>{opt.label}</SelectOption>
             ))}
@@ -43,7 +49,11 @@ function UserFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
         </div>
         <div className="space-y-2">
           <Label>상태</Label>
-          <Select value={data.status || 'active'} onChange={(e) => onChange('status', e.target.value)}>
+          <Select
+            name="status"
+            value={data.status || 'active'}
+            onChange={(e) => onChange('status', e.target.value)}
+          >
             {USER_STATUS_OPTIONS.map(opt => (
               <SelectOption key={opt.value} value={opt.value}>{opt.label}</SelectOption>
             ))}
@@ -63,6 +73,7 @@ function PostFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
       <div className="space-y-2 mb-4">
         <Label>제목</Label>
         <Input
+          name="title"
           value={data.title || ''}
           onChange={(e) => onChange('title', e.target.value)}
           placeholder="게시글 제목을 입력하세요"
@@ -72,6 +83,7 @@ function PostFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
         <div className="space-y-2">
           <Label>작성자</Label>
           <Input
+            name="author"
             value={data.author || ''}
             onChange={(e) => onChange('author', e.target.value)}
             placeholder="작성자명"
@@ -79,7 +91,11 @@ function PostFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
         </div>
         <div className="space-y-2">
           <Label>카테고리</Label>
-          <Select value={data.category || ''} onChange={(e) => onChange('category', e.target.value)}>
+          <Select
+            name="category"
+            value={data.category || ''}
+            onChange={(e) => onChange('category', e.target.value)}
+          >
             <SelectOption value="" disabled>카테고리 선택</SelectOption>
             {CATEGORY_OPTIONS.map(opt => (
               <SelectOption key={opt.value} value={opt.value}>{opt.label}</SelectOption>
@@ -90,6 +106,7 @@ function PostFormFields({ formData, onChange }: Omit<EntityFormFieldsProps, 'ent
       <div className="space-y-2">
         <Label>내용</Label>
         <Textarea
+          name="content"
           value={data.content || ''}
           onChange={(e) => onChange('content', e.target.value)}
           placeholder="게시글 내용을 입력하세요"
