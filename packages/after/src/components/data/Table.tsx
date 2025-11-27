@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import * as React from "react"
+import type { ComponentProps } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -19,11 +19,10 @@ const tableVariants = cva(
   }
 )
 
-function Table({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"table"> & VariantProps<typeof tableVariants>) {
+// Props 타입 정의
+export type TableProps = ComponentProps<"table"> & VariantProps<typeof tableVariants>
+
+function Table({ className, variant, ...props }: TableProps) {
   return (
     <div className="relative w-full overflow-auto">
       <table

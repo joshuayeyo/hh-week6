@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import type { ComponentProps, ReactNode } from "react"
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -26,11 +27,20 @@ const modalContentVariants = cva(
   }
 )
 
-interface ModalProps {
+// Props 타입 정의
+export interface ModalProps {
   open?: boolean
   onOpenChange?: (open: boolean) => void
-  children: React.ReactNode
+  children: ReactNode
 }
+
+export type ModalOverlayProps = ComponentProps<"div">
+export type ModalContentProps = ComponentProps<"div"> & VariantProps<typeof modalContentVariants>
+export type ModalHeaderProps = ComponentProps<"div">
+export type ModalTitleProps = ComponentProps<"h2">
+export type ModalDescriptionProps = ComponentProps<"p">
+export type ModalFooterProps = ComponentProps<"div">
+export type ModalCloseProps = ComponentProps<"button">
 
 function Modal({ open, onOpenChange, children }: ModalProps) {
   // ESC 키로 닫기
@@ -61,11 +71,7 @@ function Modal({ open, onOpenChange, children }: ModalProps) {
   return <>{children}</>
 }
 
-function ModalOverlay({
-  className,
-  onClick,
-  ...props
-}: React.ComponentProps<"div">) {
+function ModalOverlay({ className, onClick, ...props }: ModalOverlayProps) {
   return (
     <div
       data-slot="modal-overlay"
@@ -77,12 +83,7 @@ function ModalOverlay({
   )
 }
 
-function ModalContent({
-  className,
-  size,
-  children,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof modalContentVariants>) {
+function ModalContent({ className, size, children, ...props }: ModalContentProps) {
   return (
     <div
       data-slot="modal-content"
@@ -96,7 +97,7 @@ function ModalContent({
   )
 }
 
-function ModalHeader({ className, ...props }: React.ComponentProps<"div">) {
+function ModalHeader({ className, ...props }: ModalHeaderProps) {
   return (
     <div
       data-slot="modal-header"
@@ -109,7 +110,7 @@ function ModalHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ModalTitle({ className, ...props }: React.ComponentProps<"h2">) {
+function ModalTitle({ className, ...props }: ModalTitleProps) {
   return (
     <h2
       data-slot="modal-title"
@@ -119,7 +120,7 @@ function ModalTitle({ className, ...props }: React.ComponentProps<"h2">) {
   )
 }
 
-function ModalDescription({ className, ...props }: React.ComponentProps<"p">) {
+function ModalDescription({ className, ...props }: ModalDescriptionProps) {
   return (
     <p
       data-slot="modal-description"
@@ -129,7 +130,7 @@ function ModalDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
-function ModalFooter({ className, ...props }: React.ComponentProps<"div">) {
+function ModalFooter({ className, ...props }: ModalFooterProps) {
   return (
     <div
       data-slot="modal-footer"
@@ -142,11 +143,7 @@ function ModalFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ModalClose({
-  className,
-  onClick,
-  ...props
-}: React.ComponentProps<"button">) {
+function ModalClose({ className, onClick, ...props }: ModalCloseProps) {
   return (
     <button
       data-slot="modal-close"

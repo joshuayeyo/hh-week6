@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import * as React from "react"
+import type { ComponentProps } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -26,12 +26,14 @@ const headerVariants = cva(
   }
 )
 
-function Header({
-  className,
-  variant,
-  position,
-  ...props
-}: React.ComponentProps<"header"> & VariantProps<typeof headerVariants>) {
+// Props 타입 정의
+export type HeaderProps = ComponentProps<"header"> & VariantProps<typeof headerVariants>
+export type HeaderContentProps = ComponentProps<"div">
+export type HeaderLogoProps = ComponentProps<"div">
+export type HeaderNavProps = ComponentProps<"nav">
+export type HeaderActionsProps = ComponentProps<"div">
+
+function Header({ className, variant, position, ...props }: HeaderProps) {
   return (
     <header
       data-slot="header"
@@ -41,7 +43,7 @@ function Header({
   )
 }
 
-function HeaderContent({ className, ...props }: React.ComponentProps<"div">) {
+function HeaderContent({ className, ...props }: HeaderContentProps) {
   return (
     <div
       data-slot="header-content"
@@ -54,7 +56,7 @@ function HeaderContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function HeaderLogo({ className, ...props }: React.ComponentProps<"div">) {
+function HeaderLogo({ className, ...props }: HeaderLogoProps) {
   return (
     <div
       data-slot="header-logo"
@@ -64,7 +66,7 @@ function HeaderLogo({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function HeaderNav({ className, ...props }: React.ComponentProps<"nav">) {
+function HeaderNav({ className, ...props }: HeaderNavProps) {
   return (
     <nav
       data-slot="header-nav"
@@ -74,7 +76,7 @@ function HeaderNav({ className, ...props }: React.ComponentProps<"nav">) {
   )
 }
 
-function HeaderActions({ className, ...props }: React.ComponentProps<"div">) {
+function HeaderActions({ className, ...props }: HeaderActionsProps) {
   return (
     <div
       data-slot="header-actions"

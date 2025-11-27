@@ -19,11 +19,11 @@ const textareaVariants = cva(
   }
 )
 
-function Textarea({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"textarea"> & VariantProps<typeof textareaVariants>) {
+// Props 타입 정의
+export type TextareaProps = React.ComponentProps<"textarea"> &
+  VariantProps<typeof textareaVariants>
+
+function Textarea({ className, variant, ...props }: TextareaProps) {
   return (
     <textarea
       data-slot="textarea"

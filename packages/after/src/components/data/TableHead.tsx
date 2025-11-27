@@ -1,8 +1,11 @@
-import * as React from "react"
+/* eslint-disable react-refresh/only-export-components */
+import type { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+export type TableHeadProps = ComponentProps<"th">
+
+function TableHead({ className, ...props }: TableHeadProps) {
   return (
     <th
       data-slot="table-head"

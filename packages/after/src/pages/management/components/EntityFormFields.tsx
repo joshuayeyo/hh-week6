@@ -2,7 +2,8 @@ import { Input, Select, SelectOption, Textarea, Label } from '@/components/forms
 import type { EntityType, FormData } from '../types'
 import { ROLE_OPTIONS, USER_STATUS_OPTIONS, CATEGORY_OPTIONS } from '../constants/tableColumns'
 
-interface EntityFormFieldsProps {
+// Props 타입 정의
+export interface EntityFormFieldsProps {
   entityType: EntityType
   formData: FormData
   onChange: (key: string, value: string) => void

@@ -1,8 +1,11 @@
-import * as React from "react"
+/* eslint-disable react-refresh/only-export-components */
+import type { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+export type TableFooterProps = ComponentProps<"tfoot">
+
+function TableFooter({ className, ...props }: TableFooterProps) {
   return (
     <tfoot
       data-slot="table-footer"

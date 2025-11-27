@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import * as React from "react"
+import type { ComponentProps } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -25,9 +25,9 @@ const inputVariants = cva(
   }
 )
 
-interface InputProps
-  extends Omit<React.ComponentProps<"input">, "size">,
-    VariantProps<typeof inputVariants> {}
+// Props 타입 정의
+export type InputProps = Omit<ComponentProps<"input">, "size"> &
+  VariantProps<typeof inputVariants>
 
 function Input({ className, variant, size, type, ...props }: InputProps) {
   return (

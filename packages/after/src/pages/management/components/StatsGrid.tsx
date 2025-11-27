@@ -16,7 +16,8 @@ const STAT_COLORS = {
   stat4: { bg: '#f5f5f5', border: '#bdbdbd', text: '#424242' },
 } as const
 
-interface StatsGridProps {
+// Props 타입 정의
+export interface StatsGridProps {
   stats: Stats
 }
 

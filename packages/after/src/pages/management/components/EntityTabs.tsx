@@ -9,7 +9,8 @@ const TAB_BASE_STYLE = {
   borderRadius: '3px',
 } as const
 
-interface EntityTabsProps {
+// Props 타입 정의
+export interface EntityTabsProps {
   entityType: EntityType
   onChange: (type: EntityType) => void
 }

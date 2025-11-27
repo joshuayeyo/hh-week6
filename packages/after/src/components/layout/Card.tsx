@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import * as React from "react"
+import type { ComponentProps } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -20,11 +20,15 @@ const cardVariants = cva(
   }
 )
 
-function Card({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
+// Props 타입 정의
+export type CardProps = ComponentProps<"div"> & VariantProps<typeof cardVariants>
+export type CardHeaderProps = ComponentProps<"div">
+export type CardTitleProps = ComponentProps<"h3">
+export type CardDescriptionProps = ComponentProps<"p">
+export type CardContentProps = ComponentProps<"div">
+export type CardFooterProps = ComponentProps<"div">
+
+function Card({ className, variant, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
@@ -34,20 +38,17 @@ function Card({
   )
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+function CardHeader({ className, ...props }: CardHeaderProps) {
   return (
     <div
       data-slot="card-header"
-      className={cn(
-        "flex flex-col gap-1.5 p-6 pb-0",
-        className
-      )}
+      className={cn("flex flex-col gap-1.5 p-6 pb-0", className)}
       {...props}
     />
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
+function CardTitle({ className, ...props }: CardTitleProps) {
   return (
     <h3
       data-slot="card-title"
@@ -57,7 +58,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
   )
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"p">) {
+function CardDescription({ className, ...props }: CardDescriptionProps) {
   return (
     <p
       data-slot="card-description"
@@ -67,17 +68,13 @@ function CardDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+function CardContent({ className, ...props }: CardContentProps) {
   return (
-    <div
-      data-slot="card-content"
-      className={cn("p-6", className)}
-      {...props}
-    />
+    <div data-slot="card-content" className={cn("p-6", className)} {...props} />
   )
 }
 
-function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+function CardFooter({ className, ...props }: CardFooterProps) {
   return (
     <div
       data-slot="card-footer"

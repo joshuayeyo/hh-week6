@@ -8,7 +8,8 @@ import type { User } from '../../../services/userService'
 import type { Post } from '../../../services/postService'
 import { USER_COLUMNS, POST_COLUMNS } from '../constants/tableColumns'
 
-interface EntityTableProps {
+// Props 타입 정의
+export interface EntityTableProps {
   entityType: EntityType
   data: Entity[]
   onEdit: (item: Entity) => void
