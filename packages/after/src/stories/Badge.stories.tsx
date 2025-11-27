@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/primitives'
 
 /**
  * Badge 컴포넌트 스토리
